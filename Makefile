@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Wextra -g -Iinclude
 SRC = src/allocator.c src/test.c
 SRC_PHASE2 = src/allocator.c src/test_phase2.c
 OUT = test_allocator

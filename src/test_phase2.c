@@ -10,7 +10,6 @@
  * 4. Error Handling
  */
 
-/* Helper function to check if pointer is aligned */
 int is_aligned(void* ptr, size_t alignment) {
     return ((uintptr_t)ptr % alignment) == 0;
 }
@@ -42,7 +41,6 @@ void test_alignment() {
     printf("\n");
 }
 
-/* Test 2: Block Splitting */
 void test_splitting() {
     printf("=== Test 2: Block Splitting ===\n");
     
@@ -54,13 +52,11 @@ void test_splitting() {
     my_free(large);
     printf("Freed large block\n");
     
-    // Now allocate a small block - should split the large one
     void* small = my_malloc(50);
     printf("Allocated small block (50 bytes) at: %p\n", small);
     printf("The large block should have been split!\n");
     printf("(Remainder should still be available for allocation)\n");
     
-    // Try to allocate another block from the remainder
     void* another = my_malloc(100);
     printf("Allocated another block (100 bytes) at: %p\n", another);
     printf("✓ Block splitting appears to be working!\n");
@@ -70,7 +66,6 @@ void test_splitting() {
     printf("\n");
 }
 
-/* Test 3: Block Coalescing */
 void test_coalescing() {
     printf("=== Test 3: Block Coalescing ===\n");
     
@@ -84,13 +79,11 @@ void test_coalescing() {
     printf("  Block 2: %p\n", block2);
     printf("  Block 3: %p\n", block3);
     
-    // Free them in order (should coalesce)
     printf("\nFreeing blocks 1, 2, 3...\n");
     my_free(block1);
     my_free(block2);
     my_free(block3);
     
-    // Now try to allocate a large block that needs all three
     void* large = my_malloc(150);
     printf("Allocated large block (150 bytes) at: %p\n", large);
     
@@ -104,16 +97,13 @@ void test_coalescing() {
     printf("\n");
 }
 
-/* Test 4: Error Handling */
 void test_error_handling() {
     printf("=== Test 4: Error Handling ===\n");
     
-    // Test 1: Free NULL (should be safe)
     printf("Test: Freeing NULL pointer...\n");
     my_free(NULL);
     printf("✓ Freeing NULL is safe\n");
     
-    // Test 2: Allocate 0 bytes (should return NULL)
     printf("Test: Allocating 0 bytes...\n");
     void* ptr = my_malloc(0);
     if (ptr == NULL) {
@@ -123,21 +113,18 @@ void test_error_handling() {
         my_free(ptr);
     }
     
-    // Test 3: Double-free detection
     printf("Test: Double-free detection...\n");
     void* test_ptr = my_malloc(10);
     my_free(test_ptr);
     printf("  (Attempting double-free - should show error message)\n");
-    my_free(test_ptr);  // This should detect double-free
+    my_free(test_ptr);  
     
     printf("\n");
 }
 
-/* Test 5: Memory Efficiency */
 void test_memory_efficiency() {
     printf("=== Test 5: Memory Efficiency ===\n");
     
-    // Allocate and free multiple blocks to test fragmentation
     void* ptrs[10];
     
     printf("Allocating 10 blocks of 20 bytes each...\n");
@@ -176,4 +163,6 @@ int main() {
     
     return 0;
 }
+
+
 

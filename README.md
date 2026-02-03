@@ -30,7 +30,11 @@ memory-allocator/
 ## Features
 	•	my_malloc(size_t size) — allocate memory blocks
 	•	my_free(void* ptr) — free previously allocated blocks
+	•	my_calloc(size_t num, size_t size) — allocate and zero-initialize memory
+	•	my_realloc(void* ptr, size_t new_size) — resize existing allocations
+	•	Memory statistics functions — track allocation metrics
 	•	Tracks allocated and free memory using a free-list
+	•	Memory alignment, block coalescing, and block splitting
 	•	Lightweight, modular, and educational
 
  ---
@@ -52,25 +56,25 @@ memory-allocator/
 
 ## Roadmap
 
-### ✅ Phase 1: Core Implementation (Current)
+### ✅ Phase 1: Core Implementation (Complete)
 - [x] Basic `my_malloc()` implementation
 - [x] Basic `my_free()` implementation
 - [x] Free-list data structure
 - [x] First-fit allocation strategy
 - [x] Simple test program
 
-### 🔄 Phase 2: Memory Management Improvements (In Progress)
-- [ ] **Block Coalescing**: Merge adjacent free blocks to reduce fragmentation
-- [ ] **Block Splitting**: Split large free blocks to better utilize memory
-- [ ] **Memory Alignment**: Ensure allocated blocks are properly aligned (e.g., 8-byte alignment)
-- [ ] **Boundary Tags**: Add footer tags to enable backward traversal for coalescing
-- [ ] **Error Handling**: Improve error handling and edge case management
+### ✅ Phase 2: Memory Management Improvements (Complete)
+- [x] **Block Coalescing**: Merge adjacent free blocks to reduce fragmentation
+- [x] **Block Splitting**: Split large free blocks to better utilize memory
+- [x] **Memory Alignment**: Ensure allocated blocks are properly aligned (8-byte alignment)
+- [x] **Boundary Tags**: Add footer tags to enable backward traversal for coalescing
+- [x] **Error Handling**: Improve error handling and edge case management
 
-### 📋 Phase 3: Additional Standard Functions
-- [ ] **my_calloc()**: Implement zero-initialized memory allocation
-- [ ] **my_realloc()**: Implement memory reallocation with size adjustment
-- [ ] **my_memalign()**: Implement aligned memory allocation
-- [ ] **Memory Statistics**: Add functions to track allocation statistics (total allocated, free blocks, etc.)
+### ✅ Phase 3: Additional Standard Functions (Complete)
+- [x] **my_calloc()**: Implement zero-initialized memory allocation
+- [x] **my_realloc()**: Implement memory reallocation with size adjustment
+- [x] **Memory Statistics**: Add functions to track allocation statistics (total allocated, free blocks, etc.)
+- [ ] **my_memalign()**: Implement aligned memory allocation (Future enhancement)
 
 ### 🚀 Phase 4: Advanced Allocation Strategies
 - [ ] **Best-fit Algorithm**: Implement best-fit allocation strategy
